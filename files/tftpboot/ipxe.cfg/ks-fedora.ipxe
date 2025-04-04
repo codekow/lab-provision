@@ -1,0 +1,30 @@
+#!ipxe
+
+set os_ver 41
+set os Fedora Server - ${os_ver}
+
+# set base-http http://${next-server}/tftpboot
+# set base-tftp tftp://${next-server}
+# set base-url ${base-http}
+
+goto os_install
+
+:os_install
+echo Install - ${os}
+echo Starting in 10 seconds...
+sleep 10
+
+set ks_url ${base-url}/install/ks/ks-fedora-server.cfg
+set os_path local/fedora/${os_ver}/Server/x86_64/os
+set local_mirror ${base-url}/${os_path}
+set fedora_mirror https://download.fedoraproject.org/pub/fedora/linux/releases/${os_ver}/Server/x86_64/os
+
+set params ip=dhcp inst.text
+set params ${params} inst.stage2=${local_mirror}
+set params ${params} inst.repo=${fedora_mirror}
+
+imgfree
+kernel ${base-url}/${os_path}/images/pxeboot/vmlinuz
+initrd --name initrd ${base-url}/${os_path}/images/pxeboot/initrd.img
+imgargs vmlinuz initrd=initrd ${params} inst.ks=${ks_url} hostname=${hostname}
+boot
