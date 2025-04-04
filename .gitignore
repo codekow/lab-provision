@@ -3,6 +3,10 @@ data/
 scratch/
 files.txt
 
+# tftpboot bins
+files/tftpboot/ipxe/
+files/tftpboot/local/
+
 # swap files
 *~
 .*~
