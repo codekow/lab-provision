@@ -1,7 +1,7 @@
 #!ipxe
 
 :version_check
-set latest_version 1.21.1+ (gdc118)
+set latest_version 1.21.1+ (g5c49e)
 
 echo ${cls}
 echo Running version.... ${version}
