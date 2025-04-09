@@ -15,7 +15,7 @@ init(){
 }
 
 download() {
-if [ ! -z "${2}" ]; then
+if [ -n "${2}" ]; then
   [ -e ${2} ] && return
   wget "${1}" -O "${2}"
 else
@@ -61,13 +61,13 @@ download_memtest(){
   FOLDER='local/memtest'
   [ ! -d "${FOLDER}" ] && mkdir -p "${FOLDER}"
 
-    cd "${FOLDER}"
+    cd "${FOLDER}" || return
 
     download "https://memtest.org/download/v7.00/mt86plus_7.00.binaries.zip"
     unzip mt86plus_*.zip
     rm mt86plus_*.zip
 
-    cd ../..
+    cd ../.. || return
 }
 
 download_fedora_ks(){
@@ -114,6 +114,17 @@ download_fedora_server_iso(){
   # [ ! -d "${FOLDER}" ] && mkdir -p "${FOLDER}"/{iso,os}
   # download "https://download.fedoraproject.org/pub/fedora/linux/releases/${OS_VER}/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-40-1.14.iso" "${FOLDER}/iso/Fedora-Everything-netinst-x86_64-40-1.14.iso"
 
+}
+
+download_fcos(){
+  STREAM=stable
+  VERSION=40.20240416.3.1
+
+  BASEURL=https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
+
+  curl -LO ${BASEURL}/fedora-coreos-${VERSION}-live-kernel-x86_64
+  curl -LO ${BASEURL}/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
+  curl -LO ${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img
 }
 
 main() {

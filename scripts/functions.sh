@@ -1,4 +1,6 @@
 #!/bin/bash
+  
+[ -d scratch ] || mkdir scratch
 
 lab_wol(){
   # MACS=()
@@ -9,7 +11,7 @@ lab_wol(){
   done
 }
 
-create_vm(){
+lab_create_vm(){
   VM_NAME=${1:-00}
   VM_MAC=${2:-00}
   VM_FILE=files/etc/libvirt/qemu/vm-00.xml
@@ -17,17 +19,14 @@ create_vm(){
   sed '
       s/vm-00/'"${VM_NAME}"/g'
       s/52:54:00:4e:e0:00/52:54:00:4e:e0:'"${VM_MAC}"/g'
-      ' "${VM_FILE}"
+      ' "${VM_FILE}" > "scratch/${VM_NAME}"
 
 }
 
-download_fcos(){
-  STREAM=stable
-  VERSION=40.20240416.3.1
+lab_create_vm_set(){
 
-  BASEURL=https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
-
-  curl -LO ${BASEURL}/fedora-coreos-${VERSION}-live-kernel-x86_64
-  curl -LO ${BASEURL}/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
-  curl -LO ${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img
+  for i in {00..10};
+  do 
+    lab_create_vm vm-"$i" "(($i * 2)"
+  done
 }
