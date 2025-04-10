@@ -19,7 +19,7 @@ lab_create_vm(){
   sed '
       s/vm-00/'"${VM_NAME}"/g'
       s/52:54:00:4e:e0:00/52:54:00:4e:e0:'"${VM_MAC}"/g'
-      ' "${VM_FILE}" > "scratch/${VM_NAME}"
+      ' "${VM_FILE}" > "scratch/${VM_NAME}".xml
 
 }
 
