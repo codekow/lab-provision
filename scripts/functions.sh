@@ -27,6 +27,6 @@ lab_create_vm_set(){
 
   for i in {00..10};
   do 
-    lab_create_vm vm-"$i" "(($i * 2)"
+    lab_create_vm vm-"$i" "$i"
   done
 }
