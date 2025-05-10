@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&UseKeyboard2=true&Locale2=es-US&Keyboard2=0000040a&GeoLocation=244&ProcessorArchitecture=amd64&BypassNetworkCheck=true&ComputerNameMode=Script&ComputerNameScript=return+Read-Host+-Prompt+%27Enter+computer+name%27%3B&CompactOsMode=Never&TimeZoneMode=Implicit&PartitionMode=Unattended&PartitionLayout=GPT&EspSize=300&RecoveryMode=Partition&RecoverySize=1000&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&UserAccountMode=Unattended&AccountName0=Admin&AccountDisplayName0=&AccountPassword0=&AccountGroup0=Administrators&AccountName1=User&AccountDisplayName1=&AccountPassword1=&AccountGroup1=Users&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&ShowFileExtensions=true&TaskbarSearch=Hide&TaskbarIconsMode=Default&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableRemoteDesktop=true&HardenSystemDriveAcl=true&DisableLastAccess=true&DisableAppSuggestions=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DeleteWindowsOld=true&EffectsMode=Default&DesktopIconsMode=Custom&IconHome=true&IconNetwork=true&IconThisPC=true&ExpressSettings=DisableAll&KeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Toggle&NumLockInitial=Off&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Toggle&ColorMode=Custom&SystemColorTheme=Dark&AppsColorTheme=Dark&AccentColor=%230078d4&AccentColorOnStart=true&AccentColorOnBorders=true&EnableTransparency=true&WallpaperMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveClipchamp=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOneSync=true&RemovePowerAutomate=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveWallet=true&RemoveWeather=true&RemoveXboxApps=true&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&UseKeyboard2=true&Locale2=es-US&Keyboard2=0000040a&GeoLocation=244&ProcessorArchitecture=amd64&BypassNetworkCheck=true&ComputerNameMode=Script&ComputerNameScript=return+Read-Host+-Prompt+%27Enter+computer+name%27%3B&CompactOsMode=Never&TimeZoneMode=Implicit&PartitionMode=Unattended&PartitionLayout=GPT&EspSize=300&RecoveryMode=Partition&RecoverySize=1000&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&UserAccountMode=Unattended&AccountName0=Admin&AccountDisplayName0=&AccountPassword0=&AccountGroup0=Administrators&AccountName1=User&AccountDisplayName1=&AccountPassword1=&AccountGroup1=Users&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&ShowFileExtensions=true&TaskbarSearch=Hide&TaskbarIconsMode=Default&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableRemoteDesktop=true&HardenSystemDriveAcl=true&DisableLastAccess=true&DisableAppSuggestions=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DeleteWindowsOld=true&EffectsMode=Default&DesktopIconsMode=Custom&IconHome=true&IconNetwork=true&IconThisPC=true&WifiMode=Skip&ExpressSettings=DisableAll&KeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Toggle&NumLockInitial=Off&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Toggle&ColorMode=Custom&SystemColorTheme=Dark&AppsColorTheme=Dark&AccentColor=%230078d4&AccentColorOnBorders=true&EnableTransparency=true&WallpaperMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveClipchamp=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOneSync=true&RemovePowerAutomate=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveWallet=true&RemoveWeather=true&RemoveXboxApps=true&DefaultUserScript1=%3A%3A+This+will+restore+the+classic+right+click+menu%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CClasses%5CCLSID%5C%7B86ca1aa0-34aa-4e8b-a509-50c905bae2a2%7D%5CInprocServer32+%2Ff+%2Fve%0D%0A%0D%0A%3A%3A+This+will+make+the+taskbar+less+like+Apple%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced+%2Fv+TaskbarAl+%2Ft+REG_DWORD+%2Fd+0+%2Ff%0D%0A%0D%0A%3A%3A+This+will+remove+fun+facts+tips+and+more+on+the+lock+screen%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager+%2Fv+RotatingLockScreenOverlayEnabled+%2Ft+REG_DWORD+%2Fd+0+%2Ff%0D%0Areg+add+HKU%5CDefaultUser%5C%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager+%2Fv+SubscribedContent-338387Enabled+%2Ft+REG_DWORD+%2Fd+0+%2Ff&DefaultUserScriptType1=Cmd&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -124,6 +124,7 @@
 			<OOBE>
 				<ProtectYourPC>3</ProtectYourPC>
 				<HideEULAPage>true</HideEULAPage>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
 				<HideOnlineAccountScreens>false</HideOnlineAccountScreens>
 			</OOBE>
 			<FirstLogonCommands>
@@ -370,7 +371,7 @@ Set-ItemProperty -LiteralPath $key -Name 'ConfigureStartPins' -Value $json -Type
 		<File path="C:\Windows\Setup\Scripts\SetColorTheme.ps1">
 $lightThemeSystem = 0;
 $lightThemeApps = 0;
-$accentColorOnStart = 1;
+$accentColorOnStart = 0;
 $enableTransparency = 1;
 $htmlAccentColor = '#0078D4';
 &amp; {
@@ -419,6 +420,17 @@ $htmlAccentColor = '#0078D4';
 	$palette[ $index++ ] = $accentColor.A;
 	Set-ItemProperty @params -Value $palette -Type 'Binary' -Force;
 };
+		</File>
+		<File path="C:\Windows\Setup\Scripts\unattend-01.cmd">
+:: This will restore the classic right click menu
+reg add HKU\DefaultUser\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /f /ve
+
+:: This will make the taskbar less like Apple
+reg add HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarAl /t REG_DWORD /d 0 /f
+
+:: This will remove fun facts tips and more on the lock screen
+reg add HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v RotatingLockScreenOverlayEnabled /t REG_DWORD /d 0 /f
+reg add HKU\DefaultUser\\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-338387Enabled /t REG_DWORD /d 0 /f
 		</File>
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
 $scripts = @(
@@ -580,15 +592,6 @@ $scripts = @(
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d 0 /f;
 	};
 	{
-		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAl" /t REG_DWORD /d 0 /f;
-	};
-	{
-		reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "RotatingLockScreenOverlayEnabled" /t REG_DWORD /d 0 /f;
-	};
-	{
-		reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338387Enabled" /t REG_DWORD /d 0 /f;
-	};
-	{
 		$names = @(
 		  'ContentDeliveryAllowed';
 		  'FeatureManagementEnabled';
@@ -624,6 +627,9 @@ $scripts = @(
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\DWM" /v ColorPrevalence /t REG_DWORD /d 1 /f;
+	};
+	{
+		C:\Windows\Setup\Scripts\unattend-01.cmd;
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle Normal -NoProfile -Command \""Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UserOnce.ps1' -Raw | Invoke-Expression;\""" /f;
