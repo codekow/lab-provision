@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&UseKeyboard2=true&Locale2=es-US&Keyboard2=0000040a&GeoLocation=244&ProcessorArchitecture=amd64&BypassNetworkCheck=true&ComputerNameMode=Script&ComputerNameScript=return+Read-Host+-Prompt+%27Enter+computer+name%27%3B&CompactOsMode=Never&TimeZoneMode=Implicit&PartitionMode=Unattended&PartitionLayout=GPT&EspSize=300&RecoveryMode=Partition&RecoverySize=1000&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&UserAccountMode=Unattended&AccountName0=Admin&AccountDisplayName0=&AccountPassword0=&AccountGroup0=Administrators&AccountName1=User&AccountDisplayName1=&AccountPassword1=&AccountGroup1=Users&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&ShowFileExtensions=true&TaskbarSearch=Hide&TaskbarIconsMode=Default&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableRemoteDesktop=true&HardenSystemDriveAcl=true&DisableLastAccess=true&DisableAppSuggestions=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DeleteWindowsOld=true&EffectsMode=Default&DesktopIconsMode=Custom&IconHome=true&IconNetwork=true&IconThisPC=true&WifiMode=Skip&ExpressSettings=DisableAll&KeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Toggle&NumLockInitial=Off&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Toggle&ColorMode=Custom&SystemColorTheme=Dark&AppsColorTheme=Dark&AccentColor=%230078d4&AccentColorOnBorders=true&EnableTransparency=true&WallpaperMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveClipchamp=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOneSync=true&RemovePowerAutomate=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveWallet=true&RemoveWeather=true&RemoveXboxApps=true&DefaultUserScript1=%3A%3A+This+will+restore+the+classic+right+click+menu%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CClasses%5CCLSID%5C%7B86ca1aa0-34aa-4e8b-a509-50c905bae2a2%7D%5CInprocServer32+%2Ff+%2Fve%0D%0A%0D%0A%3A%3A+This+will+make+the+taskbar+less+like+Apple%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced+%2Fv+TaskbarAl+%2Ft+REG_DWORD+%2Fd+0+%2Ff%0D%0A%0D%0A%3A%3A+This+will+remove+fun+facts+tips+and+more+on+the+lock+screen%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager+%2Fv+RotatingLockScreenOverlayEnabled+%2Ft+REG_DWORD+%2Fd+0+%2Ff%0D%0Areg+add+HKU%5CDefaultUser%5C%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager+%2Fv+SubscribedContent-338387Enabled+%2Ft+REG_DWORD+%2Fd+0+%2Ff&DefaultUserScriptType1=Cmd&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&UseKeyboard2=true&Locale2=es-US&Keyboard2=0000040a&GeoLocation=244&ProcessorArchitecture=amd64&BypassNetworkCheck=true&ComputerNameMode=Random&CompactOsMode=Never&TimeZoneMode=Implicit&PartitionMode=Unattended&PartitionLayout=GPT&EspSize=300&RecoveryMode=Partition&RecoverySize=1000&DiskAssertionMode=Skip&WindowsEditionMode=Generic&WindowsEdition=pro&UserAccountMode=Unattended&AccountName0=Admin&AccountDisplayName0=&AccountPassword0=&AccountGroup0=Administrators&AccountName1=User&AccountDisplayName1=&AccountPassword1=&AccountGroup1=Users&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=None&ShowFileExtensions=true&ClassicContextMenu=true&TaskbarSearch=Hide&TaskbarIconsMode=Default&DisableWidgets=true&LeftTaskbar=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableFastStartup=true&EnableRemoteDesktop=true&HardenSystemDriveAcl=true&DisableLastAccess=true&DisableAppSuggestions=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DeleteWindowsOld=true&EffectsMode=Default&DesktopIconsMode=Custom&IconHome=true&IconNetwork=true&IconThisPC=true&WifiMode=Skip&ExpressSettings=DisableAll&KeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Toggle&NumLockInitial=Off&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Toggle&ColorMode=Custom&SystemColorTheme=Dark&AppsColorTheme=Dark&AccentColor=%230078d4&AccentColorOnBorders=true&EnableTransparency=true&WallpaperMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveClipchamp=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMediaFeatures=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOneSync=true&RemovePowerAutomate=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveWallet=true&RemoveWeather=true&RemoveXboxApps=true&DefaultUserScript0=%3A%3A+This+will+restore+the+classic+right+click+menu%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CClasses%5CCLSID%5C%7B86ca1aa0-34aa-4e8b-a509-50c905bae2a2%7D%5CInprocServer32+%2Ff+%2Fve%0D%0A%0D%0A%3A%3A+This+will+make+the+taskbar+less+like+Apple%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CExplorer%5CAdvanced+%2Fv+TaskbarAl+%2Ft+REG_DWORD+%2Fd+0+%2Ff%0D%0A%0D%0A%3A%3A+This+will+remove+fun+facts+tips+and+more+on+the+lock+screen%0D%0Areg+add+HKU%5CDefaultUser%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager+%2Fv+RotatingLockScreenOverlayEnabled+%2Ft+REG_DWORD+%2Fd+0+%2Ff%0D%0Areg+add+HKU%5CDefaultUser%5C%5CSoftware%5CMicrosoft%5CWindows%5CCurrentVersion%5CContentDeliveryManager+%2Fv+SubscribedContent-338387Enabled+%2Ft+REG_DWORD+%2Fd+0+%2Ff&DefaultUserScriptType0=Cmd&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -52,9 +52,6 @@
 	</settings>
 	<settings pass="generalize"></settings>
 	<settings pass="specialize">
-		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-			<ComputerName>TEMPNAME</ComputerName>
-		</component>
 		<component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<RunSynchronous>
 				<RunSynchronousCommand wcm:action="add">
@@ -153,41 +150,6 @@ foreach( $file in $Document.unattend.Extensions.File ) {
     [System.IO.File]::WriteAllBytes( $path, $bytes );
 }
 		</ExtractScript>
-		<File path="C:\Windows\Setup\Scripts\GetComputerName.ps1">
-return Read-Host -Prompt 'Enter computer name';
-		</File>
-		<File path="C:\Windows\Setup\Scripts\SetComputerName.ps1">
-$ErrorActionPreference = 'Stop';
-Set-StrictMode -Version 'Latest';
-&amp; {
-	$newName = ( Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\ComputerName.txt' -Raw ).Trim();
-	if( [string]::IsNullOrWhitespace( $newName ) ) {
-		throw "No computer name was provided.";
-	}
-
-	$keys = @(
-		@{
-			LiteralPath = 'Registry::HKLM\SYSTEM\CurrentControlSet\Control\ComputerName\ComputerName';
-			Name = 'ComputerName';
-		};
-		@{
-			LiteralPath = 'Registry::HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters';
-			Name = 'Hostname';
-		};
-		@{
-			LiteralPath = 'Registry::HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters';
-			Name = 'NV Hostname';
-		};
-	);
-
-	while( $true ) {
-		foreach( $key in $keys ) {
-			Set-ItemProperty @key -Type 'String' -Value $newName;
-		}
-		Start-Sleep -Milliseconds 50;
-	}
-} *&gt;&amp;1 &gt;&gt; 'C:\Windows\Setup\Scripts\SetComputerName.log';
-		</File>
 		<File path="C:\Windows\Setup\Scripts\RemovePackages.ps1">
 $selectors = @(
 	'Microsoft.Microsoft3DViewer';
@@ -435,11 +397,6 @@ reg add HKU\DefaultUser\\Software\Microsoft\Windows\CurrentVersion\ContentDelive
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
 $scripts = @(
 	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\GetComputerName.ps1' -Raw | Invoke-Expression &gt; 'C:\Windows\Setup\Scripts\ComputerName.txt';
-		Start-Process -FilePath ( Get-Process -Id $PID ).Path -ArgumentList '-NoProfile', '-Command', 'Get-Content -LiteralPath "C:\Windows\Setup\Scripts\SetComputerName.ps1" -Raw | Invoke-Expression;' -WindowStyle 'Hidden';
-		Start-Sleep -Seconds 10;
-	};
-	{
 		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v BypassNRO /t REG_DWORD /d 1 /f;
 	};
 	{
@@ -516,6 +473,15 @@ $scripts = @(
 		Get-AppxPackage -Name 'Microsoft.Windows.Ai.Copilot.Provider' | Remove-AppxPackage;
 	};
 	{
+		$params = @{
+			Path = 'Registry::HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32';
+			ErrorAction = 'SilentlyContinue';
+			Force = $true;
+		};
+		New-Item @params;
+		Set-ItemProperty @params -Name '(Default)' -Value '' -Type 'String';
+	};
+	{
 		Set-ItemProperty -LiteralPath 'Registry::HKCU\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Type 'DWord' -Value 0;
 	};
 	{
@@ -590,6 +556,12 @@ $scripts = @(
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t REG_DWORD /d 0 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSuperHidden" /t REG_DWORD /d 1 /f;
 	};
 	{
 		$names = @(
