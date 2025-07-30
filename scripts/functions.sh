@@ -7,7 +7,7 @@ lab_wol(){
 
   for nic in ${MACS[*]}
   do
-    wol $nic
+    wol "$nic"
   done
 }
 
@@ -28,5 +28,31 @@ lab_create_vm_set(){
   for i in {00..10};
   do 
     lab_create_vm vm-"$i" "$i"
+  done
+}
+
+lab_uci_create_vm_dhcp(){
+  VM_NAME=${1:-vm-00}
+  VM_MAC=${2:-52:54:00:4E:E0:00}
+  VM_IP=${3:-10.105.0.100}
+  VM_LEASE=${4:-5m}
+
+  uci add dhcp host
+  uci set dhcp.@host[-1].name="${VM_NAME}"
+  uci add_list dhcp.@host[-1].mac="${VM_MAC}"
+  uci set dhcp.@host[-1].ip="${VM_IP}"
+  uci set dhcp.@host[-1].leasetime="${VM_LEASE}"
+  uci set dhcp.@host[-1].dns='1'
+}
+
+lab_uci_setup_vm_dhcp(){
+  BASE_MAC="52:54:00:4E:E0"
+  BASE_IP="10.105.0"
+
+  for i in $(seq -w 00 10)
+  do
+    # kludge for sh
+    num=${i#0}
+    echo lab_uci_create_vm_dhcp vm-"${i}" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_IP}.$((num + 1))"
   done
 }
