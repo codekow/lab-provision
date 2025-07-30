@@ -2,6 +2,9 @@
 
 ## Dnsmasq config (tested on openwrt)
 
+- [ ] Enable TFTP server
+- [ ] TFTP server root - /mnt/sda1/tftpboot
+
 ```sh
 # create symlink to use existing http
 ln -s /mnt/sda1/tftpboot /www/tftpboot

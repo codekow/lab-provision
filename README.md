@@ -9,7 +9,7 @@ A collection of provisioning scripts and files
 ```sh
 cd files/tftpboot
 
-. ../../scripts/update_bins.sh
+. ../../scripts/tftp_bins.sh
 ```
 
 ### Examples for iPXE / kickstart
