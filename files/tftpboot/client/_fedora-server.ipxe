@@ -26,5 +26,5 @@ set params ${params} inst.repo=${fedora_mirror}
 imgfree
 kernel ${base-url}/${os_path}/images/pxeboot/vmlinuz
 initrd --name initrd ${base-url}/${os_path}/images/pxeboot/initrd.img
-imgargs vmlinuz initrd=initrd ${params} inst.ks=${ks_url} hostname=${hostname} inst.text
+imgargs vmlinuz initrd=initrd ${params} inst.ks=${ks_url} hostname=${hostname} inst.text inst.sshd
 boot

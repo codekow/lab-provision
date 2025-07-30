@@ -3,9 +3,9 @@
 set os_ver 42
 set os Fedora Server - ${os_ver}
 
-# set base-http http://${next-server}/tftpboot
-# set base-tftp tftp://${next-server}
-# set base-url ${base-http}
+set base-http http://${next-server}/tftpboot
+set base-tftp tftp://${next-server}
+set base-url ${base-http}
 
 goto os_install
 
@@ -26,5 +26,5 @@ set params ${params} inst.repo=${fedora_mirror}
 imgfree
 kernel ${base-url}/${os_path}/images/pxeboot/vmlinuz
 initrd --name initrd ${base-url}/${os_path}/images/pxeboot/initrd.img
-imgargs vmlinuz initrd=initrd ${params} inst.ks=${ks_url} hostname=${hostname}
+imgargs vmlinuz initrd=initrd ${params} inst.ks=${ks_url} hostname=${hostname} inst.text inst.sshd
 boot
