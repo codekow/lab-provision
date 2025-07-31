@@ -48,11 +48,14 @@ lab_uci_create_vm_dhcp(){
 lab_uci_setup_vm_dhcp(){
   BASE_MAC="52:54:00:4E:E0"
   BASE_IP="10.105.0"
+  BASE_IP_START=61
+  BASE_START=00
+  BASE_END=10
 
-  for i in $(seq -w 00 10)
+  for i in $(seq -w ${BASE_START} ${BASE_END})
   do
     # kludge for sh
     num=${i#0}
-    echo lab_uci_create_vm_dhcp vm-"${i}" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_IP}.$((num + 1))"
+    lab_uci_create_vm_dhcp vm-"${i}" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_IP}.$((num + BASE_IP_START))"
   done
 }
