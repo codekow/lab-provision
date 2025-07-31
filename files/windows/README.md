@@ -1,5 +1,9 @@
 # Windows
 
+## Easy Download
+
+- https://massgrave.dev/windows_11_links
+
 ## Ansible on Windows
 
 - https://woshub.com/ansible-manage-windows-machines/
