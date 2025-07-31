@@ -13,6 +13,7 @@
 - https://github.com/rh-dttl-edge-virt-demo/edge-virt/blob/main/applications/windows-10-image/templates/autounattend.yaml
 - https://github.com/robifis/AI_Windows-Install
 - https://pureinfotech.com/windows-11-installation-unsupported-hardware-unattended-answer-file/
+- https://github.com/larsks/windows-openstack-image
 
 ## Autounattend XML generator
 
@@ -26,6 +27,5 @@ Configured:
 mkdir config
 cp autounattend.xml config/
 
-mkisofs -o config.iso -J -r config
-
+mkisofs -o win-config.iso -J -r config
 ```
