@@ -12,8 +12,8 @@ lab_wol(){
 }
 
 lab_create_vm(){
-  VM_NAME=${1:-00}
-  VM_MAC=${2:-00}
+  VM_NAME=${1:-vm-00}
+  VM_MAC=${2:-52:54:00:4E:E0:00}
   VM_FILE=files/etc/libvirt/qemu/vm-00.xml
 
   sed '
@@ -27,7 +27,9 @@ lab_create_vm_set(){
   BASE_MAC="52:54:00:4E:E0"
 
   for i in {00..10};
-  do 
+  do
+    # kludge for sh
+    num=${i#0}
     lab_create_vm vm-"${i}" "${BASE_MAC}:$((num * 2 + 10))"
   done
 }
