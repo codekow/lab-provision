@@ -11,4 +11,5 @@ $(wtoctl | grep 'oc delete')
 ```sh
 oc apply -k components/cluster-configs/rbac/overlays/no-self-provisioner/
 oc apply -k components/cluster-configs/login/overlays/htpasswd/
+oc apply -k components/cluster-configs/namespaces/overlays/default-limited/
 ```
