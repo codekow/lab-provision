@@ -64,6 +64,7 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
+systemctl enable eno1-kludge
 systemctl restart eno1-kludge
 ```
 
