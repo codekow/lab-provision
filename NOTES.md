@@ -25,6 +25,21 @@ bridge_config(){
 bridge_config &
 ```
 
+NUC Issue Kludges
+
+- https://forum.proxmox.com/threads/intel-nic-e1000e-hardware-unit-hang.106001
+
+```sh
+# check hardware
+lspci | grep Ethernet
+
+# turn off offload
+ethtool -K eno1 gso off gro off tso off tx off rx off
+
+# verify settings
+ethtool -k eno1 | grep offload
+```
+
 ## Links of interest
 
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
