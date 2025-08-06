@@ -10,7 +10,13 @@ until oc apply -k  https://github.com/redhat-na-ssa/ocp-web-terminal-enhanced/bo
 $(wtoctl | grep 'oc delete')
 ```
 
-## OpenShift Setup
+## Setup `htpasswd`
+
+```sh
+htpasswd_...
+```
+
+## OpenShift Cluster Setup
 
 ```sh
 oc apply -k components/cluster-configs/rbac/overlays/no-self-provisioner/
