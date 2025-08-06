@@ -1,0 +1,14 @@
+[nodes:vars]
+ansible_connection=ssh
+ansible_port=22
+# ansible_user=admin
+
+[nodes:children]
+nucs_good
+# nucs-bad
+
+[nucs_good]
+nuc10-[01:09].dav
+
+[nucs_bad]
+nuc10-[10:12].dav

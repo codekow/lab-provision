@@ -32,3 +32,19 @@ iPXE example that includes:
 - Boot `Memtest` or `netboot.xyz`
 
 See [iPXE example](files/tftpboot/boot.ipxe)
+
+### Ansible adhoc commands
+
+```sh
+python -m venv venv
+. ./venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+```sh
+# cp ansible.example scratch/inventory
+# modify scratch/inventory as needed
+
+ansible -i scratch/inventory -a "uptime" nodes
+```
