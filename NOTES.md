@@ -40,6 +40,33 @@ ethtool -K eno1 gso off gro off tso off tx off rx off
 ethtool -k eno1 | grep offload
 ```
 
+```sh
+cat << EOF > /usr/local/bin/eno1-kludge.sh
+#!/bin/sh
+ethtool -K eno1 gso off gro off tso off tx off rx off
+EOF
+chmod +x /usr/local/bin/eno1-kludge.sh
+
+cat << EOF > /etc/systemd/system/eno1-kludge.service 
+[Unit]
+Description=Fix Nic Hardware Hang
+#After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/eno1-kludge.sh
+RemainAfterExit=true
+# ExecStop=true
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl restart eno1-kludge
+```
+
 ## Links of interest
 
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
