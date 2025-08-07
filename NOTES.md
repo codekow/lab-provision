@@ -68,6 +68,12 @@ systemctl enable eno1-kludge
 systemctl restart eno1-kludge
 ```
 
+## Create VM storage
+
+```sh
+lvm lvcreate -n vm-00-sda -L 200G vmdata
+```
+
 ## Links of interest
 
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
