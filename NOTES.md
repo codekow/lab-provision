@@ -70,7 +70,22 @@ systemctl restart eno1-kludge
 
 ## Create VMs
 
-Create vm vol
+Create vm templates in scratch
+
+```sh
+. scripts/functions
+
+# create xml for vms
+lab_create_vm_set
+
+# copy xml to node
+scp -O scratch/vm-{00..03}.xml nuc10-01.dav:/tmp
+
+# define vm as root
+sudo virsh define /tmp/vm-00.xml
+```
+
+Create vm vol (storage)
 
 ```sh
 lvm lvcreate -n vm-00-sda -L 200G vmdata
