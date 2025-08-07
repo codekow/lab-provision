@@ -68,10 +68,42 @@ systemctl enable eno1-kludge
 systemctl restart eno1-kludge
 ```
 
-## Create VM storage
+## Create VMs
+
+Create vm vol
 
 ```sh
 lvm lvcreate -n vm-00-sda -L 200G vmdata
+```
+
+OpenShift Bare Metal Hosts
+
+```yaml
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: vm-05
+  namespace: openshift-machine-api
+spec:
+  automatedCleaningMode: metadata
+  bmc:
+    address: 'redfish-virtualmedia://nuc10-01:8000/redfish/v1/Systems/vm-03'
+    credentialsName: vm-03-bmc-secret
+    disableCertificateVerification: true
+  bootMACAddress: '52:54:00:4E:E0:16'
+  bootMode: UEFI
+```
+
+```yaml
+kind: Secret
+apiVersion: v1
+metadata:
+  name: vm-03-bmc-secret
+  namespace: openshift-machine-api
+stringData:
+  password: admin
+  username: alongpassword
+type: Opaque
 ```
 
 ## Links of interest
