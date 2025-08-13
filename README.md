@@ -47,4 +47,6 @@ pip install -r requirements.txt
 # modify scratch/inventory as needed
 
 ansible -i scratch/inventory -a "uptime" nodes
+
+ansible -i scratch/inventory -a 'sudo fwupdmgr upgrade -y' nodes
 ```
