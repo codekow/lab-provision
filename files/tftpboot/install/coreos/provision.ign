@@ -1,0 +1,129 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5Ydtf2FA4Pj48KO7bhg0X3OWOA9Fx38RcCMumr+s6Pr4T30tbdp9qyu4036yl4wUoXMKQW5Ql5pKBy+6APdG/E7xAf8W9IV1MKxuwtg9kuYKmKL9YbPZ4C37p/OaudZp2iiubBxCDa4CM7sX+DgUKq7uVCH0L1ukYqwciv9eF4FRSK4ARn+TQ8Zx3tMX/VTUniriDKOBbTWqQpqPTxT+oW5hypEtei89si8jB/7wtm1TngzQlVOcHYCT/x14r0INJJpX8gvkEr7f1aZPwsPsULxYrskuitXEK0MzZcRjh6xtVq5e/8T6M1pdY4k4m7BK6m5NY1prL25ELtuOYYgJAfpuUc0z+pt0mhGv5CbFAf86E4VkIWn1wo7GbtSKgc8p0TeCOYQIslzN1MH8O/BZW1WyAsQJXaodfoAbm0UTsP32G+1mzM1d4yL8smw1SJdg+BbCAtVBhMaELMI3993jkO93RM/KNNYKNQKU1krC3+HuxYtGqnBb5TTDXMTvg/FU= koree@macntoss",
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiDkivcV1aY1A95hZ1Zmz0I5DRApnJ2ratLrXJ5Ty5pT/6IgukkSKjdcXEMYkjln7pN+7zNUJ0IOJVSHdmBIJtQeSg0BjYYIgybJiTXBT60vBIxop5f6dYYUFNeQtdxDYIBrkBNmkOoTF9WDVpjFV2QqIs2My0YY+CUVyxNLx7DZAYCg5ncD9dxLkvvuTh9F6+xt75+Z/lM/Y1WD9vqVSYlvPV8IZhL6ln3h2asZgjWYkwVW5gk5uQd2aLacMBd8BgcOgOvBo8XeRGtqHvmVqqMDuml3SuzB4fjSkwHO2NTwMvy1rJ/Z8on4j6aXl9AFqFWED682V5Ij4+n311azHhwL7x8FHipnN5m4eG7RD0fTvqzOPTOI43RsccUUOfOtAaVwBZ8QboZRxboQwZ1VZobCw0EzMAxvWhTSg/YNZnQaCb29mHF3mNjupxPd/Q38L9SLM1dIEQU/dgfe/Na2Ok8nNbRIyyplccq4LZgy1dG7/BvHBpG5fquwZKtvHrdQs= cory@kowbuntu",
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4YQz9vhWtFC89pW+OdIjtngtYqoVHWfUQpqWqrS1OvvxFBGhMtA+AHd6er2rwXg+yg9v0vs9HJoHI0zzBueGy9zgeqZ73MydGLWSRkUZT/j345zz0z+lc9wgneUBn9gp1h7BBMajsrMVH+9xW+llsU7/CFOi8PAAF+DymBmUmvZU6Wvo+6JctO89p4dGZd+L1a9dbHbIO3crI+pc+JGooH16gdqnLUI/ZB1NencFezN5Wihkyazh2PvDr33TIXukzc2arpRcfW8rDWddFI661ieHjjHNaONohU7GRCUUgOor1a9Wy9U2goJ2BFuMpSrLu72HV9xjw0Q6Gqbp+zpJ7Yayg9NgtaPNCM7vAV+5u36Ip3/ADpXG2o5OKsg7uW0EvB3UdduPy10j+fyRzBmvAORBjdkHAssjRVZgYO0GsOPxW2RJHZY7xprm8CfvsJxLOy6tkh+dMZ9ufuWiYVbIHb536kz3W/c2f+DFsjVRPUee11r5LNZ/XO4xx7QpYIxc= cory@kowdora"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "directories": [
+      {
+        "path": "/etc/dhcpd"
+      },
+      {
+        "path": "/etc/ipxe"
+      },
+      {
+        "path": "/etc/nginx/templates"
+      },
+      {
+        "path": "/var/lib/nginx-root/assisted-installer"
+      },
+      {
+        "path": "/var/lib/assisted-service"
+      }
+    ],
+    "files": [
+      {
+        "overwrite": true,
+        "path": "/etc/hostname",
+        "contents": {
+          "source": "data:,provision%0A"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/ipxe/boot.ipxe",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/5SUy27bOhCG93yKOYiRHSVKlnUJ4M1pUqAo0BRoF90ZlDi02FKiSlKuU9vvXkhynLhIY2TDy/jnN+O56Oo/1W2RiLrqCGmw7eHztzv43xgP951XpnVEeWxAKFeZDdoHuP94C7en24cv95NAojCWw/tpKweAtKaBd7efJoGrUWtQA348TlbcKg93w+INaFNxPb4lxKEHgZL32h/ZhFzB1xodgqtNrwVw/Ys/uJPKG2i4r+rSbIly+BNmu75X4gAyXvA4qiRdCF5QUSSMFliVlOWLUqS5rNJCwvU1PHf59H/3e7iCRrJz5qLMhKiSnIpiUVIskwUt05TRkvEkZZkoRZZcZEbnTEwYZ1kyp3MZ5TTBJKU5L9K3xRmfMytRZfM4SqlkcUkFywWNSkSKcY5pVhRJHGcXmfNzZsrzJI9kRsU8lZSVEacsK+Y0lWUURQmLeFRcZCaEVLUxDoHSR9FsdzwdgFKvGjS9hwVjDMzYiwN0bbyB2W4yHAi5OZHHlnFoN2hXdui/2vvuJgw7azbKKdOG3DnlPAqqWue51miJapW3Ama7Zw8PoWr4Gl3YbXFoxnASBapZv65X61YNYY3KH2hb1BfIm0artv8NE3b55OhkeYYE1S2HQQUrghZRtOiXEVjeCtME3vbOr6quX5oWKmPRuECrDQaDX+lWvdXL12OZhJOjR69SWefHYT6ZOs29NLYJlFg26Lkm4+/7/VSaabbJzXFm/1EToYNJ0FnzHSsfGLsOu74MJ2s4ZGUbWtTIHbpwnoZ3Q4l9rdp1uM3TVZqExoVvLt/binJM90vFcT6w2Jm/UvpyKqb98TZ88ci4/AkAAP//rPrMZ3wFAAA="
+        }
+      },
+      {
+        "path": "/etc/latest-fcos",
+        "contents": {
+          "source": "data:,36.20221030.3.0"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/usr/local/bin/update-coreos.sh",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/4yP0UrEQAxF3/sV47oPCqZBkEUW/AP/QabTtDvuzKQk2VIo/XfRWRTxxcfce5Lce3uDXSzYeT01+dxHcTA5nL1gih2WMZYFhNlwoJ7FQ2Ah1ib0/4BmEo1cXnb79fEI+7vgzSFZwOSN1GAIrPfbrqGFggsXSQ5eHYBQZiMoPhP4lNzJbNIjYneJqde2Hm/rq0n4nYK1LCNOwj2qCfmsqOa7RNcd3K/XLBsuz4e3w9PvpPDjw5riTBBLNPF50Lbybczjw5dzJimUoMpV+qz+l/yelbfmIwAA//8CeDV+ZwEAAA=="
+        },
+        "mode": 493
+      },
+      {
+        "path": "/etc/nginx/templates/default.conf.template",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/3TMMarDQAyE4X5PMRcwcml4pxFevViwkUCSgyH47sHuUqQcmP9LiZcE3g0I9wLtGZQbh5A91A7a6jn+GjA0SwzLvMz39JVL3UD/0j14Wj3Ek24J4L1crcsBt+t+fiWceWl9UsviMSR+d2f7BAAA///xkFy5owAAAA=="
+        },
+        "mode": 420
+      },
+      {
+        "path": "/var/lib/assisted-service/configmap.yml",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/7RUXXOjNhR996/Q6GVfgMgf62X1RozqMIuBIJydTKejUUGOGQOikuw23cl/7wicrJPttH1IHzn36Oro3nPgfX0nlK5lh8FpOjnUXYXBSna7+mHD+0krDK+44XgCQMdbgUE51CbPYEBpRAsSMkryu2hF2E1KCwyms08e8pA3xT76jP6OR1c3ZEMw2BvT2/q2uGHFfUYw6GQnJgCE1297jWAS2GN1pw1vGqFGMAsoxYBXbd2dgTQvMIAfF/MZHJEtJfkFhWRxes+KIF+TAgPZ9Uq0Fo/oF0aSVX6fFVGaMLrNzq12vNFi6LXdbO5ZtE4iy7iskCS4jgmjUbKOCUvSkLAwoZuA3l6ybr6yuyCOwqBIc5aT222Ukw1JCorBh5+/wdO4DohhJXb82BjowJZrIxTE32DZH1kpldAQLxyoeMva+leIp8u5v3BgVesD0/Wfgj1YECEHngfFTS07NtZ7ISpm9krovWwq1mpLdWAnzO9SHVjDjejKxx8YyIE9Lw/CsEZqzXqhStEZ/iAgRk8OtGd/0Di70OhPP8/+b4n/oHFqRepOvlHov+sUn55++TABINoEa/Ji9euAErbN49Hs+OqqV/JUD5nzfd+3/OxueWE1o46DU2IbmeTZy5Zr0aTIWEh+CrZxMVxhbQ1tIUtpsc4JvY1ZGBSBvfZ1UC4INjBf0zz8noiL4uuoZNvrOFqxVZoUQZQQ69l1RIs8Itaxvx35o1dL++r/8t7xb0CLNA/WBINd3Qj9qM2QvZSyYXDnIMhedHpf7wz7HomFN0XQGfbHVbmvjSjNUQmI4R/+ki0X0IFH1UAMzzc3suTNXmpztROVVNy1W5f69Zc7X3ozNJtN0Rx5cw+5TX0S3tjQq7WEDlRSmp1m79TbHdu9XNE+QOci92+OwNFTOYmJHey7jei8uauXJlfyUGF73EMu8uShcq0MF3100ScXzab+fP5K579Sn39g2Bp6fEX6JWR5tjlvGoNnESd1NAd50laDq/pWD0ImfwUAAP//BsnScp8GAAA="
+        },
+        "mode": 420
+      },
+      {
+        "path": "/var/lib/assisted-service/pod.yml",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/7yTz27UQAzG7/sUfoEhWy6EuSJxa7Xi0Ls38aYWk5mp7YnUt0eZbBpoALFIcIv/fM7vszyY+ZFEOUUP093hK8fewyn1h5EMezT0B4CAZwo6fwFgzh5QldWodxzVMASSA0DEkX5a0kzdLO5SNORIUkc5QBmuQx1IiS4ntUFIn0NN8ogDeXgu+PKOU9NRtKQfmq3L3b1316wPaKRWdQtHf64BxemzpHH9TZfihYd7zF/osuQ2xVKrySmFMtJ9KtF0bXMwzvEJ7clDM6E0gc9NHlbcbVAe3Ly56vGNCeoHchwvgmpSOitCzX5jrvDeUOEa5CT2urWnpHZKYh7aY3v8a8M3Ys69Tkkm7mjP+UP5t8ht2/4n5F/C/gnm8ePxn57S9Va+1yOvFySkhmKnFLh78fBAU31ry9RX2reqamd+1moU7bE2fwrI4wbazeHDqrvuYdO73S3fPLM/L9JvAQAA//8K31noYwQAAA=="
+        },
+        "mode": 420
+      },
+      {
+        "path": "/usr/local/bin/assisted-service.sh",
+        "contents": {
+          "compression": "gzip",
+          "source": "data:;base64,H4sIAAAAAAAC/5RRUW/TMBh89684glWtaImTIkG3quNX8ITQ9MX+2lhN7Mx2WyLgv6MkGwQekPaUT5e709357RtVW6dqio3QBupCQbW2VhSjjYlNHjlcrGYROIXhZo3vAhhvy3EvKwFcyabH6e9ebgSgfdeRM3v5XgAHH2BhHeRN5CdUkM/a9Q7GCwBg3Xhk8lmWTdgYB7n+Fw6cHi/UnnkvP03Al8lvxpDzE0p8xWqFOjCdFu4POJBt2eBqUwP+ZhO0N7xQ3049rDtC/imEyNo7E5H81HkoimJOElvmfkkVgPGO53HOwS2sxU+hKTIyWWWwTgBZ9kMHpsTryaz3piOHvqUBp3PNyHPt3cEeO+rx+yqGrh2p4/dljTDgrsQGmT6HFvkBTUr9vVLV5mNRFmVR3W/Lu1IFJjNkC9GHElX5P9V2u1UNU5uaWbbbjQU5puCHV4fOc+Ov7q/sk9+79eKJPruTG1kUjrcYl3pYbV6oHEmLXwEAAP//oMsYwqoCAAA="
+        },
+        "mode": 493
+      }
+    ]
+  },
+  "systemd": {
+    "units": [
+      {
+        "contents": "[Unit]\nDescription=Update FCOS sources for http hosting\nWants=network-online.target\nAfter=network-online.target\n[Service]\nType=oneshot\nRemainAfterExit=true\nExecStart=/usr/local/bin/update-coreos.sh\n[Install]\nWantedBy=default.target\n",
+        "enabled": true,
+        "name": "update-fcos.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=OKD Assisted Installer Service\nWants=network-online.target\nAfter=network-online.target\n[Service]\nType=oneshot\nRemainAfterExit=true\nExecStart=/usr/local/bin/assisted-service.sh\nExecStop=/usr/local/bin/assisted-service.sh destroy\n[Install]\nWantedBy=default.target\n",
+        "enabled": true,
+        "name": "assisted-service.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Podman container-nginx.service\nDocumentation=man:podman-generate-systemd(1)\nWants=network-online.target\nAfter=network-online.target\nRequiresMountsFor=%t/containers\n[Service]\nEnvironment=PODMAN_SYSTEMD_UNIT=%n\nRestart=always\nTimeoutStopSec=70\nExecStartPre=/bin/rm -f %t/%n.ctr-id\nExecStart=/usr/bin/podman run --cidfile=%t/%n.ctr-id --cgroups=no-conmon --rm --sdnotify=conmon -d --replace -p 80:8080 -v /var/lib/nginx-root:/usr/share/nginx/html:Z,ro -v /etc/nginx/templates:/etc/nginx/templates:Z,ro --label=io.containers.autoupdate=image --name nginx docker.io/nginxinc/nginx-unprivileged\nExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id\nExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id\nType=notify\nNotifyAccess=all\n[Install]\nWantedBy=default.target\n",
+        "enabled": true,
+        "name": "container-nginx.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Podman container-ipxe.service\nDocumentation=man:podman-generate-systemd(1)\nWants=network-online.target\nAfter=network-online.target\nRequiresMountsFor=%t/containers\n[Service]\nEnvironment=PODMAN_SYSTEMD_UNIT=%n\nRestart=always\nTimeoutStopSec=70\nExecStartPre=/bin/rm -f %t/%n.ctr-id\nExecStart=/usr/bin/podman run --cidfile=%t/%n.ctr-id --cgroups=no-conmon --rm --sdnotify=conmon -d --replace --net=host -v /etc/ipxe/boot.ipxe:/tftpboot/autoexec.ipxe:Z,ro --label=io.containers.autoupdate=image --name ipxe registry.jharmison.com/library/ipxe:latest\nExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id\nExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id\nType=notify\nNotifyAccess=all\n[Install]\nWantedBy=default.target\n",
+        "enabled": true,
+        "name": "container-ipxe.service"
+      },
+      {
+        "contents": "[Unit]\nDescription=Podman auto-update timer\n[Timer]\nOnCalendar=daily\nRandomizedDelaySec=900\nPersistent=true\n[Install]\nWantedBy=timers.target\n",
+        "enabled": true,
+        "name": "podman-auto-update.timer"
+      }
+    ]
+  }
+}

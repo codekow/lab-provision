@@ -1,0 +1,295 @@
+variant: fcos
+version: 1.4.0
+passwd:
+  users:
+  - name: core
+    ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5Ydtf2FA4Pj48KO7bhg0X3OWOA9Fx38RcCMumr+s6Pr4T30tbdp9qyu4036yl4wUoXMKQW5Ql5pKBy+6APdG/E7xAf8W9IV1MKxuwtg9kuYKmKL9YbPZ4C37p/OaudZp2iiubBxCDa4CM7sX+DgUKq7uVCH0L1ukYqwciv9eF4FRSK4ARn+TQ8Zx3tMX/VTUniriDKOBbTWqQpqPTxT+oW5hypEtei89si8jB/7wtm1TngzQlVOcHYCT/x14r0INJJpX8gvkEr7f1aZPwsPsULxYrskuitXEK0MzZcRjh6xtVq5e/8T6M1pdY4k4m7BK6m5NY1prL25ELtuOYYgJAfpuUc0z+pt0mhGv5CbFAf86E4VkIWn1wo7GbtSKgc8p0TeCOYQIslzN1MH8O/BZW1WyAsQJXaodfoAbm0UTsP32G+1mzM1d4yL8smw1SJdg+BbCAtVBhMaELMI3993jkO93RM/KNNYKNQKU1krC3+HuxYtGqnBb5TTDXMTvg/FU= koree@macntoss
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiDkivcV1aY1A95hZ1Zmz0I5DRApnJ2ratLrXJ5Ty5pT/6IgukkSKjdcXEMYkjln7pN+7zNUJ0IOJVSHdmBIJtQeSg0BjYYIgybJiTXBT60vBIxop5f6dYYUFNeQtdxDYIBrkBNmkOoTF9WDVpjFV2QqIs2My0YY+CUVyxNLx7DZAYCg5ncD9dxLkvvuTh9F6+xt75+Z/lM/Y1WD9vqVSYlvPV8IZhL6ln3h2asZgjWYkwVW5gk5uQd2aLacMBd8BgcOgOvBo8XeRGtqHvmVqqMDuml3SuzB4fjSkwHO2NTwMvy1rJ/Z8on4j6aXl9AFqFWED682V5Ij4+n311azHhwL7x8FHipnN5m4eG7RD0fTvqzOPTOI43RsccUUOfOtAaVwBZ8QboZRxboQwZ1VZobCw0EzMAxvWhTSg/YNZnQaCb29mHF3mNjupxPd/Q38L9SLM1dIEQU/dgfe/Na2Ok8nNbRIyyplccq4LZgy1dG7/BvHBpG5fquwZKtvHrdQs= cory@kowbuntu
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4YQz9vhWtFC89pW+OdIjtngtYqoVHWfUQpqWqrS1OvvxFBGhMtA+AHd6er2rwXg+yg9v0vs9HJoHI0zzBueGy9zgeqZ73MydGLWSRkUZT/j345zz0z+lc9wgneUBn9gp1h7BBMajsrMVH+9xW+llsU7/CFOi8PAAF+DymBmUmvZU6Wvo+6JctO89p4dGZd+L1a9dbHbIO3crI+pc+JGooH16gdqnLUI/ZB1NencFezN5Wihkyazh2PvDr33TIXukzc2arpRcfW8rDWddFI661ieHjjHNaONohU7GRCUUgOor1a9Wy9U2goJ2BFuMpSrLu72HV9xjw0Q6Gqbp+zpJ7Yayg9NgtaPNCM7vAV+5u36Ip3/ADpXG2o5OKsg7uW0EvB3UdduPy10j+fyRzBmvAORBjdkHAssjRVZgYO0GsOPxW2RJHZY7xprm8CfvsJxLOy6tkh+dMZ9ufuWiYVbIHb536kz3W/c2f+DFsjVRPUee11r5LNZ/XO4xx7QpYIxc= cory@kowdora
+storage:
+  directories:
+    - path: /etc/dhcpd
+    - path: /etc/ipxe
+    - path: /etc/nginx/templates
+    - path: /var/lib/nginx-root/assisted-installer
+    - path: /var/lib/assisted-service
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      overwrite: true
+      contents:
+        inline: |
+          provision
+    - path: /etc/ipxe/boot.ipxe
+      contents:
+        inline: |
+          #!ipxe
+          dhcp
+
+          menu PXE Boot Options
+          item discovery OKD Discovery ISO
+          item fedora Fedora boot from CDN
+          item shell iPXE shell
+          item exit Exit to local boot
+
+          set default fedora
+
+          # These should always default to matchbox
+          iseq ${uuid} f25a21cf-5da9-d940-9ecb-085bd68fc69f && set default discovery || # mf0
+          iseq ${uuid} 5b7ddc48-d95b-eb45-b660-b0a4607dbd74 && set default discovery || # mf1
+          iseq ${uuid} e40a0743-3f18-4e46-8a96-085bd68fc69f && set default discovery || # mf2
+          iseq ${uuid} cdc73216-f02b-d08d-1bee-e28e67994227 && set default discovery || # mf3
+          iseq ${uuid} 6a8481f7-d36f-0b1a-0793-6fb111401a19 && set default discovery || # mf4
+
+          choose --default ${default} --timeout 5000 option && goto ${option}
+
+          :discovery
+          set server_root http://provision/assisted-installer
+          initrd ${server_root}/images/pxeboot/initrd.img
+          initrd ${server_root}/images/ignition.img
+          kernel ${server_root}/images/pxeboot/vmlinuz initrd=initrd.img initrd=ignition.img ip=dhcp rd.neednet=1 random.trust_cpu=on coreos.live.rootfs-url=${server_root}/images/pxeboot/rootfs.img ignition.firstboot ignition.platform.id=metal
+          boot || goto shell
+
+          :fedora
+          set server_root http://dl.fedoraproject.org/pub/fedora/linux/releases/36/Everything/x86_64/os/
+          initrd ${server_root}/images/pxeboot/initrd.img
+          kernel ${server_root}/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img inst.repo=${server_root}
+          boot || goto shell
+
+          :shell
+          shell
+
+          :exit
+          exit
+    - path: /etc/latest-fcos
+      mode: 0644
+      contents:
+        inline: 36.20221030.3.0
+    - path: /usr/local/bin/update-coreos.sh
+      mode: 0755
+      contents:
+        inline: |
+          #!/bin/bash
+          mkdir -p /var/lib/nginx-root/fedora-coreos
+          cd /var/lib/nginx-root/fedora-coreos
+          version="${1:-$(cat /etc/latest-fcos)}"
+          exec curl -L --remote-name-all https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/${version}/x86_64/fedora-coreos-${version}-{live-initramfs.x86_64.img,live-kernel-x86_64,live-rootfs.x86_64.img,live.x86_64.iso}
+    - path: /etc/nginx/templates/default.conf.template
+      mode: 0644
+      contents:
+        inline: |
+          server {
+            root /usr/share/nginx/html;
+            listen 8080;
+            location /fedora-coreos/ {
+              autoindex on;
+            }
+            location /assisted-installer/ {
+              autoindex on;
+            }
+          }
+    - path: /var/lib/assisted-service/configmap.yml
+      mode: 0644
+      contents:
+        inline: |
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: config
+          data:
+            ASSISTED_SERVICE_HOST: 127.0.0.1:8090
+            ASSISTED_SERVICE_SCHEME: http
+            AUTH_TYPE: none
+            DB_HOST: 127.0.0.1
+            DB_NAME: installer
+            DB_PASS: admin
+            DB_PORT: "5432"
+            DB_USER: admin
+            DEPLOY_TARGET: onprem
+            DISK_ENCRYPTION_SUPPORT: "false"
+            DUMMY_IGNITION: "false"
+            ENABLE_SINGLE_NODE_DNSMASQ: "false"
+            HW_VALIDATOR_REQUIREMENTS: '[{"version":"default","master":{"cpu_cores":4,"ram_mib":16384,"disk_size_gb":100,"installation_disk_speed_threshold_ms":10,"network_latency_threshold_ms":100,"packet_loss_percentage":0},"worker":{"cpu_cores":2,"ram_mib":8192,"disk_size_gb":100,"installation_disk_speed_threshold_ms":10,"network_latency_threshold_ms":1000,"packet_loss_percentage":10},"sno":{"cpu_cores":8,"ram_mib":16384,"disk_size_gb":100,"installation_disk_speed_threshold_ms":10}}]'
+            IMAGE_SERVICE_base-url: http://provision:8888
+            IPV6_SUPPORT: "true"
+            LISTEN_PORT: "8888"
+            NTP_DEFAULT_SERVER: ""
+            POSTGRESQL_DATABASE: installer
+            POSTGRESQL_PASSWORD: admin
+            POSTGRESQL_USER: admin
+            PUBLIC_CONTAINER_REGISTRIES: 'quay.io'
+            SERVICE_base-url: http://provision:8090
+            STORAGE: filesystem
+            OS_IMAGES: '[{"openshift_version":"4.10","cpu_architecture":"x86_64","url":"http://localhost/fedora-coreos/fedora-coreos-36.20221030.3.0-live.x86_64.iso","rootfs-url":"http://localhost/fedora-coreos/fedora-coreos-36.20221030.3.0-live-rootfs.x86_64.img","version":"36.20221030.3.0"}]'
+            RELEASE_IMAGES: '[{"openshift_version":"4.10","cpu_architecture":"x86_64","url":"quay.io/openshift/okd:4.10.0-0.okd-2022-05-07-021833","version":"4.10.0-0.okd-2022-05-07-021833","default":true}]'
+            OKD_RPMS_IMAGE: quay.io/vrutkovs/okd-rpms:4.10
+    - path: /var/lib/assisted-service/pod.yml
+      mode: 0644
+      contents:
+        inline: |
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            labels:
+              app: assisted-installer
+            name: assisted-installer
+          spec:
+            containers:
+            - args:
+              - run-postgresql
+              image: quay.io/centos7/postgresql-12-centos7:latest
+              name: db
+              envFrom:
+              - configMapRef:
+                  name: config
+              volumeMounts:
+                - mountPath: /var/lib/pgsql
+                  name: pg-data
+            - image: quay.io/edge-infrastructure/assisted-installer-ui:latest
+              name: ui
+              ports:
+              - hostPort: 8080
+              envFrom:
+              - configMapRef:
+                  name: config
+            - image: quay.io/edge-infrastructure/assisted-image-service:latest
+              name: image-service
+              ports:
+              - hostPort: 8888
+              envFrom:
+              - configMapRef:
+                  name: config
+            - image: quay.io/edge-infrastructure/assisted-service:latest
+              name: service
+              ports:
+              - hostPort: 8090
+              envFrom:
+              - configMapRef:
+                  name: config
+              volumeMounts:
+                - mountPath: /data
+                  name: ai-data
+            restartPolicy: Never
+            volumes:
+              - name: ai-data
+                persistentVolumeClaim:
+                  claimName: ai-service-data
+              - name: pg-data
+                persistentVolumeClaim:
+                  claimName: ai-db-data
+    - path: /usr/local/bin/assisted-service.sh
+      mode: 0755
+      contents:
+        inline: |
+          #!/bin/bash
+          cd /var/lib/assisted-service
+          retry() {
+            retries=$1
+            wait_retry=$2
+            command=$3
+            for i in $(seq 1 $retries); do
+              echo "$command"
+              bash -c "$command"
+              ret_value=$?
+              [ $ret_value -eq 0 ] && break
+              echo "> failed with exit code $ret_value, waiting $wait_retry seconds to retry..."
+              sleep $wait_retry
+            done
+            return $ret_value
+          }
+          case "$1" in
+            ""|create)
+              podman play kube --configmap configmap.yml pod.yml
+              retry 90 2 "curl -f http://127.0.0.1:8090/ready"
+              retry 60 10 "curl -f http://127.0.0.1:8888/health"
+              ;;
+            destroy)
+              podman play kube --configmap configmap.yml --down pod.yml
+              ;;
+            *)
+              echo "Unknown arg, $1" >&2
+              ;;
+          esac
+systemd:
+  units:
+    - name: update-fcos.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Update FCOS sources for http hosting
+        Wants=network-online.target
+        After=network-online.target
+        [Service]
+        Type=oneshot
+        RemainAfterExit=true
+        ExecStart=/usr/local/bin/update-coreos.sh
+        [Install]
+        WantedBy=default.target
+    - name: assisted-service.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=OKD Assisted Installer Service
+        Wants=network-online.target
+        After=network-online.target
+        [Service]
+        Type=oneshot
+        RemainAfterExit=true
+        ExecStart=/usr/local/bin/assisted-service.sh
+        ExecStop=/usr/local/bin/assisted-service.sh destroy
+        [Install]
+        WantedBy=default.target
+    - name: container-nginx.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Podman container-nginx.service
+        Documentation=man:podman-generate-systemd(1)
+        Wants=network-online.target
+        After=network-online.target
+        RequiresMountsFor=%t/containers
+        [Service]
+        Environment=PODMAN_SYSTEMD_UNIT=%n
+        Restart=always
+        TimeoutStopSec=70
+        ExecStartPre=/bin/rm -f %t/%n.ctr-id
+        ExecStart=/usr/bin/podman run --cidfile=%t/%n.ctr-id --cgroups=no-conmon --rm --sdnotify=conmon -d --replace -p 80:8080 -v /var/lib/nginx-root:/usr/share/nginx/html:Z,ro -v /etc/nginx/templates:/etc/nginx/templates:Z,ro --label=io.containers.autoupdate=image --name nginx docker.io/nginxinc/nginx-unprivileged
+        ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
+        ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
+        Type=notify
+        NotifyAccess=all
+        [Install]
+        WantedBy=default.target
+    - name: container-ipxe.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Podman container-ipxe.service
+        Documentation=man:podman-generate-systemd(1)
+        Wants=network-online.target
+        After=network-online.target
+        RequiresMountsFor=%t/containers
+        [Service]
+        Environment=PODMAN_SYSTEMD_UNIT=%n
+        Restart=always
+        TimeoutStopSec=70
+        ExecStartPre=/bin/rm -f %t/%n.ctr-id
+        ExecStart=/usr/bin/podman run --cidfile=%t/%n.ctr-id --cgroups=no-conmon --rm --sdnotify=conmon -d --replace --net=host -v /etc/ipxe/boot.ipxe:/tftpboot/autoexec.ipxe:Z,ro --label=io.containers.autoupdate=image --name ipxe registry.jharmison.com/library/ipxe:latest
+        ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
+        ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
+        Type=notify
+        NotifyAccess=all
+        [Install]
+        WantedBy=default.target
+    - name: podman-auto-update.timer
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Podman auto-update timer
+        [Timer]
+        OnCalendar=daily
+        RandomizedDelaySec=900
+        Persistent=true
+        [Install]
+        WantedBy=timers.target

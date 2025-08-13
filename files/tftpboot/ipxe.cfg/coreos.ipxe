@@ -1,0 +1,20 @@
+# coreOS
+
+# https://getfedora.org/en/coreos/download?tab=metal_virtualized&stream=stable&arch=x86_64
+set os_name fedora-coreos-36.20221030.3.0-live
+#set ignition-url ${base-url}/install/coreos/autologin.ign
+set ignition-url ${base-url}/install/coreos/provision.ign
+set base-url ${base-url}/local/coreos
+
+set kernel-url ${base-url}/${os_name}-kernel-x86_64
+set initrd-url ${base-url}/${os_name}-initramfs.x86_64.img
+set rootfs-url ${base-url}/${os_name}-rootfs.x86_64.img
+
+set kernel-args random.trust_cpu=on ignition.firstboot ignition.platform.id=metal
+set kernel-args ${kernel-args} coreos.live.rootfs-url=${rootfs-url}
+set kernel-args ${kernel-args} ignition.config.url=${ignition-url}
+
+kernel --name kernel ${kernel-url}
+initrd --name initrd ${initrd-url}
+imgargs kernel initrd=initrd ${kernel-args}
+boot
