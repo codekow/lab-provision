@@ -47,14 +47,14 @@
       <driver name="qemu" type="raw" cache="none" io="native" discard="unmap"/>
       <source dev="/dev/vmdata/vm-00-sda"/>
       <target dev="sda" bus="sata"/>
-      <boot order="2"/>
+      <boot order="1"/>
       <address type="drive" controller="0" bus="0" target="0" unit="0"/>
     </disk>
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
       <target dev="sdb" bus="sata"/>
       <readonly/>
-      <boot order="1"/>
+      <boot order="2"/>
       <address type="drive" controller="0" bus="0" target="0" unit="1"/>
     </disk>
     <controller type="usb" index="0" model="qemu-xhci" ports="15">
