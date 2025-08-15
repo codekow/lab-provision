@@ -121,6 +121,32 @@ stringData:
 type: Opaque
 ```
 
+## GPU passthrough
+
+```sh
+# add vfio driver to initramdisk
+echo 'add_drivers+=" vfio vfio_iommu_type1 vfio_pci "' > /etc/dracut.conf.d/vfio.conf
+
+# rebuild initramdisk
+dracut -fv
+```
+
+Edit grub
+
+```sh
+# sed 's/ kvm.ignore_msrs=[^ ] / /' /etc/default/grub
+```
+
+Add the following to `/etc/grub/default`:
+
+```sh
+GRUB_CMDLINE_LINUX="... rhgb quiet intel_iommu=on kvm.ignore_msrs=1 rd.driver.pre=vfio-pci rd.driver.blacklist=nouveau modprobe.blacklist=nouveau"
+```
+
+- `rd.driver.blacklist=nouveau modprobe.blacklist=nouveau`
+- `kvm.ignore_msrs=1`
+- `rd.driver.pre=vfio-pci`
+
 ## Links of interest
 
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
