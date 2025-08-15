@@ -147,6 +147,10 @@ GRUB_CMDLINE_LINUX="... rhgb quiet intel_iommu=on kvm.ignore_msrs=1 rd.driver.pr
 - `kvm.ignore_msrs=1`
 - `rd.driver.pre=vfio-pci`
 
+```sh
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
 ## Links of interest
 
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
