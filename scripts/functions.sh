@@ -26,7 +26,7 @@ lab_create_vm(){
 lab_create_vm_set(){
   BASE_MAC="52:54:00:4E:E0"
 
-  for i in {00..10};
+  for i in {00..15}
   do
     # kludge for sh
     num=${i#0}
