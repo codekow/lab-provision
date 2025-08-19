@@ -43,7 +43,7 @@ lab_create_bmh(){
   sed '
       s/vm-00/'"${VM_NAME}"/g'
       s/nuc10-01/'"${VM_HOST}"/g'
-      s/52:54:00:4e:e0:00/'"${VM_MAC}"/g'
+      s/52:54:00:4E:E0:00/'"${VM_MAC}"/g'
       ' "${VM_FILE}" > "scratch/${VM_NAME}"-bmh.yaml
 
 }
