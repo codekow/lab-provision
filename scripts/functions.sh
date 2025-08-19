@@ -34,6 +34,20 @@ lab_create_vm_set(){
   done
 }
 
+lab_create_bmh(){
+  VM_NAME=${1:-vm-00}
+  VM_MAC=${2:-52:54:00:4E:E0:00}
+  VM_HOST=${3:-nuc10-01}
+  VM_FILE=files/ocp/bmh-00.yaml
+
+  sed '
+      s/vm-00/'"${VM_NAME}"/g'
+      s/nuc10-01/'"${VM_HOST}"/g'
+      s/52:54:00:4e:e0:00/'"${VM_MAC}"/g'
+      ' "${VM_FILE}" > "scratch/${VM_NAME}"-bmh.yaml
+
+}
+
 lab_uci_create_vm_dhcp(){
   VM_NAME=${1:-vm-00}
   VM_MAC=${2:-52:54:00:4E:E0:00}

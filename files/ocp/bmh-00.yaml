@@ -1,0 +1,30 @@
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: vm-00
+  namespace: openshift-machine-api
+spec:
+  automatedCleaningMode: metadata
+  architecture: x86_64
+  online: true
+  userData:
+    name: worker-user-data-managed
+    namespace: openshift-machine-api
+  bootMode: UEFI
+  bootMACAddress: '52:54:00:4E:E0:10'
+  bmc:
+    address: 'redfish-virtualmedia://nuc10-01:8000/redfish/v1/Systems/vm-00'
+    credentialsName: vm-00-bmc-secret
+    disableCertificateVerification: true
+  customDeploy:
+    method: install_coreos
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vm-00-bmc-secret
+  namespace: openshift-machine-api
+stringData:
+  password: alongpassword
+  username: admin
