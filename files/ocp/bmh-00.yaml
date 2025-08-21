@@ -7,7 +7,7 @@ metadata:
 spec:
   automatedCleaningMode: metadata
   architecture: x86_64
-  online: true
+  online: false
   userData:
     name: worker-user-data-managed
     namespace: openshift-machine-api

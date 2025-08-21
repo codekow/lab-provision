@@ -18,7 +18,7 @@ lab_create_vm(){
 
   sed '
       s/vm-00/'"${VM_NAME}"/g'
-      s/52:54:00:4e:e0:00/'"${VM_MAC}"/g'
+      s/52:54:00:4E:E0:00/'"${VM_MAC}"/g'
       ' "${VM_FILE}" > "scratch/${VM_NAME}".xml
 
 }
@@ -47,6 +47,19 @@ lab_create_bmh(){
       ' "${VM_FILE}" > "scratch/${VM_NAME}"-bmh.yaml
 
 }
+
+lab_create_bmh_set(){
+  BASE_MAC="52:54:00:4E:E0"
+  BASE_HOST=nuc10
+
+  for i in {03..15}
+  do
+    # kludge for sh
+    num=${i#0}
+    lab_create_vm vm-"${i}" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_HOST}-${i}"
+  done
+}
+
 
 lab_uci_create_vm_dhcp(){
   VM_NAME=${1:-vm-00}
