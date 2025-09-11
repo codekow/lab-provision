@@ -22,7 +22,7 @@ A kickstart that includes:
 - Configures nested virtualization
 - Installs `vbmcd` (virtualbmc) and `sushy-tools` for BMC / Redfish emulation
 
-See [kickstart example](files/tftpboot/install/ks/ks-fedora-server.cfg)
+See [kickstart examples](files/tftpboot/install/ks)
 
 iPXE example that includes:
 
