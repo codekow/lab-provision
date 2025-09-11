@@ -1,0 +1,43 @@
+ARG IMAGE=quay.io/fedora/fedora-bootc:42
+FROM ${IMAGE}
+
+## Install ZFS
+#
+COPY overlays/zfs/ /
+
+RUN <<EOF
+dnf install -y https://zfsonlinux.org/fedora/zfs-release-2-8$(rpm --eval "%{dist}").noarch.rpm
+[ $(rpm -q kernel | wc -l) -eq 1 ] || { echo "Multiple kernels found"; exit 1; }
+dnf install -y $(rpm -q kernel | sed 's/kernel/kernel-devel/')
+dnf install -y zfs
+dnf clean all
+
+dkms autoinstall -k $(rpm -q kernel | sed 's/kernel-//')
+EOF
+
+RUN <<EOF
+dnf install -y tcpdump pciutils man vim-enhanced \
+    cockpit cockpit-ws cockpit-files cockpit-networkmanager cockpit-ostree cockpit-podman cockpit-storaged cockpit-system \
+    nfs-utils \
+    lsscsi iscsi-initiator-utils sg3_utils device-mapper-multipath targetcli
+
+dnf remove -y avahi
+
+systemctl enable iscsi.service nfs-server.service
+
+dnf clean all
+rm -rf /var/log/dnf5.log*
+EOF
+
+# not doing NVMe right now
+# COPY overlays/nvme/ /
+
+COPY overlays/user/ /
+
+RUN <<EOF
+chmod 755 /etc/ssh/authorized_keys
+chmod 644 /etc/ssh/authorized_keys/*
+chown root:root /etc/ssh/authorized_keys/*
+EOF
+
+RUN bootc container lint
