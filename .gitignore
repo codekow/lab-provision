@@ -2,6 +2,7 @@
 data/
 scratch/
 files.txt
+inventory
 
 # tftpboot bins
 files/tftpboot/ipxe/
