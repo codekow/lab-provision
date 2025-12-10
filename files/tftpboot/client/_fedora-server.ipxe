@@ -1,6 +1,6 @@
 #!ipxe
 
-set os_ver 42
+set os_ver 43
 set os Fedora Server - ${os_ver}
 
 set base-http http://${next-server}/tftpboot

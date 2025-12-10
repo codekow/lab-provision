@@ -71,7 +71,7 @@ download_memtest(){
 }
 
 download_fedora_ks(){
-  OS_VER=${1:-42}
+  OS_VER=${1:-43}
   OS_TYPE=${2:-Server}
   FOLDER="local/fedora/${OS_VER}/Server/x86_64/os/images"
 
@@ -87,7 +87,7 @@ download_fedora_ks(){
 }
 
 download_fedora_repo(){
-  OS_VER=${1:-42}
+  OS_VER=${1:-43}
   OS_TYPE=${2:-Server}
   # URL="https://download.fedoraproject.org/pub/fedora/linux/releases/${OS_VER}/Server/x86_64/os/"
   URL="https://mirror.arizona.edu/fedora/linux/releases/${OS_VER}/${OS_TYPE}/x86_64/os/"
@@ -104,7 +104,7 @@ download_fedora_repo(){
 }
 
 download_fedora_server_iso(){
-  OS_VER=${1:-42}
+  OS_VER=${1:-43}
 
   FOLDER="local/fedora/${OS_VER}/Server/x86_64"
   [ ! -d "${FOLDER}" ] && mkdir -p "${FOLDER}"/{iso,os}
