@@ -15,9 +15,9 @@ echo Starting in 10 seconds...
 sleep 10
 
 set ks_url ${base-url}/install/ks/ks-fedora-server.cfg
-set os_path local/fedora/${os_ver}/Server/x86_64/os
-set local_mirror ${base-url}/${os_path}
-set fedora_mirror download.fedoraproject.org/pub/fedora/linux/releases/${os_ver}/Server/x86_64/os
+set os_path ${os_ver}/Server/x86_64/os
+set local_mirror ${base-url}/local/fedora/${os_path}
+set fedora_mirror download.fedoraproject.org/pub/fedora/linux/releases/${os_path}
 
 set params ip=dhcp inst.text
 # set params ${params} inst.stage2=http://${local_mirror}
@@ -27,9 +27,5 @@ imgfree
 kernel http://${fedora_mirror}/images/pxeboot/vmlinuz
 initrd --name initrd http://${fedora_mirror}/images/pxeboot/initrd.img
 imgargs vmlinuz initrd=initrd ${params} inst.ks=${ks_url} hostname=${hostname} inst.text inst.sshd
-
-# echo
-# echo md5sum:
-# md5sum vmlinuz initrd.img
 
 boot
