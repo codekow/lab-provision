@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASE_MAC=52:54:00:4E:FF
-BASE_HOST=nab
+BASE_HOST=nuc10
 
 [ -d scratch ] || mkdir scratch
 
