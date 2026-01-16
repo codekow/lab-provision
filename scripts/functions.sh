@@ -63,6 +63,22 @@ lab_create_bmh_set(){
   done
 }
 
+lab_create_bmh_set_ab(){
+  BASE_MAC=${BASE_MAC:-52:54:00:4E:FF}
+  BASE_HOST=${BASE_HOST:-nuc10}
+
+  num=0
+
+  for i in {01..10}
+  do
+    # kludge for sh
+    [ "$num" = "0" ] && num=${i#0}
+    lab_create_bmh vm-"${i}a" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_HOST}-${i}"
+    num=$((num + 1))
+    lab_create_bmh vm-"${i}b" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_HOST}-${i}"
+    num=$((num + 1))
+  done
+}
 
 lab_uci_create_vm_dhcp(){
   VM_NAME=${1:-vm-00}

@@ -5,17 +5,16 @@ ansible_port=22
 
 [nodes:children]
 nucs_good
-# nucs-bad
+gpus
+
+[gpus]
+gpu-01.dav
+gpu-02.dav
 
 [nucs_good]
 nuc10-[01:10].dav
 
 [nucs_bad]
-nuc10-[11:13].dav
-
-# nuc10-01 0,3
-# nuc10-02 1,4
-# nuc10-03 2,5
 
 [vms:vars]
 ansible_connection=ssh
