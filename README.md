@@ -46,7 +46,9 @@ pip install -r requirements.txt
 # cp ansible.example scratch/inventory
 # modify scratch/inventory as needed
 
-ansible -i scratch/inventory -a "uptime" nodes
+ansible -i scratch/inventory -m raw -a "uptime" nodes
 
-ansible -i scratch/inventory -a 'sudo fwupdmgr upgrade -y' nodes
+ansible -i scratch/inventory -m raw -a 'sudo fwupdmgr upgrade -y' nodes
+
+ansible -i scartch/inventory -m script -a /tmp/run.sh nodes
 ```
