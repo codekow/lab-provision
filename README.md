@@ -50,5 +50,5 @@ ansible -i scratch/inventory -m raw -a "uptime" nodes
 
 ansible -i scratch/inventory -m raw -a 'sudo fwupdmgr upgrade -y' nodes
 
-ansible -i scartch/inventory -m script -a /tmp/run.sh nodes
+ansible -i scratch/inventory -m script -a /tmp/run.sh nodes
 ```
