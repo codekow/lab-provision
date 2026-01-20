@@ -5,6 +5,7 @@ WantedBy = multi-user.target
 Type = simple
 User = ansible
 Group = libvirt
+LimitNOFILE=500000
 Environment = "SUSHY_EMULATOR_CONFIG=/etc/sushy/sushy-emulator.conf"
 
 # ExecStart = /opt/vbmc/bin/sushy-emulator \
