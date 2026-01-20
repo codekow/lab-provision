@@ -1,8 +1,5 @@
 #!/bin/bash
 
-BASE_MAC=52:54:00:4E:FF
-BASE_HOST=nuc10
-
 [ -d scratch ] || mkdir scratch
 
 lab_wol(){
@@ -64,7 +61,7 @@ lab_create_bmh_set(){
 }
 
 lab_create_bmh_set_ab(){
-  BASE_MAC=${BASE_MAC:-52:54:00:4E:FF}
+  BASE_MAC=${BASE_MAC:-52:54:00:4E:E0}
   BASE_HOST=${BASE_HOST:-nuc10}
 
   num=0

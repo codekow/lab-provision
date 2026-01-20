@@ -1,0 +1,31 @@
+[Install]
+WantedBy = multi-user.target
+
+[Service]
+Type = simple
+User = ansible
+Group = libvirt
+Environment = "SUSHY_EMULATOR_CONFIG=/etc/sushy/sushy-emulator.conf"
+
+# ExecStart = /opt/vbmc/bin/sushy-emulator \
+#              --config /etc/sushy/sushy-emulator.conf \
+#              --debug
+
+ExecStart = /opt/vbmc/bin/gunicorn \
+            -b 0.0.0.0:8000 \
+            -w 1 \
+            --log-level debug \
+            --certfile=/etc/sushy/sushy.crt \
+            --keyfile=/etc/sushy/sushy.key \
+            "sushy_tools.emulator.main:app"
+
+Restart = on-failure
+RestartSec = 2
+TimeoutSec = 120
+ExecReload = /bin/kill -HUP
+
+[Unit]
+After = libvirtd.service
+After = syslog.target
+After = network.target
+Description = Sushy Redfish emulator for virtual machines
