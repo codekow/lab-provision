@@ -23,3 +23,14 @@ oc apply -k components/cluster-configs/rbac/overlays/no-self-provisioner/
 oc apply -k components/cluster-configs/login/overlays/htpasswd/
 oc apply -k components/cluster-configs/namespaces/overlays/default-limited/
 ```
+
+## Manage BMH
+
+```sh
+oc -n openshift-machine-api label bmh \
+  --overwrite \
+  -l machine.openshift.io/region=lab \
+  machine.openshift.io/region=offline
+
+oc label bmh/vm-04a machine.openshift.io/region=lab --overwrite
+```
