@@ -41,12 +41,6 @@ ethtool -k eno1 | grep offload
 ```
 
 ```sh
-cat << EOF > /usr/local/bin/eno1-kludge.sh
-#!/bin/sh
-ethtool -K eno1 gso off gro off tso off tx off rx off
-EOF
-chmod +x /usr/local/bin/eno1-kludge.sh
-
 cat << EOF > /etc/systemd/system/eno1-kludge.service 
 [Unit]
 Description=Fix Nic Hardware Hang
@@ -54,7 +48,7 @@ Description=Fix Nic Hardware Hang
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/eno1-kludge.sh
+ExecStart=/usr/sbin/ethtool -K eno1 gso off gro off tso off tx off rx off
 RemainAfterExit=true
 # ExecStop=true
 StandardOutput=journal
