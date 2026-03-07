@@ -1,0 +1,44 @@
+---
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: master
+  name: 99-master-ssh
+spec:
+  config:
+    ignition:
+      version: 3.2.0
+    passwd:
+      users:
+        - name: core
+          sshAuthorizedKeys:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRtuWgA55pmufdKksQ6ekiG+4nvVIvOCqlR3zF5zb+o5E8I8Rdgjaiht5p7RCSV0RApFECXwZmCgXaoodbflnDOjv0qHByzxNRl5x7Hzyw5LRRvW31MrMBFtL7AQjH0q3dj8wgB0VXVon5qZ1hG1P4tVWTYz6JLk4nOIdlg9m86+2M5K4JmOkeU/PFdj3rNoAc46vUp+J7JbJWIksxkbKPwVgyCcoobrMyynxRJFo7p/ort+CHyP4iHT0eK4gU5pMZSqc/NABI89n0ZnHQdp56ed1sPcRtDH8FRtipJ/pH6BKuGW7QQ+r8uARaMZYhf7ask3Fzq002jVYkKaW3wikpdeappD5zXjyyE3F3vxyvEYf3nz9xlnDd9ppDHWjzh4Br1d0Vl0qXzorrkQNeMZTjegK9XDG9dKN+JXllnuHWbmD9wikHsLQPCZLaHp6L94SP6WJZa4PbBVoAAjixPZTPv00Ji/cJv4vf5XG/ojTYOZJQBf60C0ak7ZpIOhXfmIE= dawhite@dawhite-mac
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKk5DMDFPmpzto9s5Nk1FeqrPYNttJnvW6FCWUGrbLFo cory@keepass
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbbtKs6P4wpUbZxIJcEa0t0Hw0x6Tv/Ml1/J7fMRqlQ cory@kowbuntu
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZCclaNu304ostULU/oHr1C25LALS4+nFSFDwO5F7EZ cory@pinky
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFybml+CZeJma57fvjnUKUwuSEn0JZRpa9/SAlu4t/Ct cory@skeldora
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBVozIG+urkwIt9isbxcg+Eqjw/9FvzRK2pfZ59CPgwh cory@kowdora
+            - # ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILedUpDQV71FuFj29wyPkxzumqF24MsY7icFGARLqxMh termux@phone
+---
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: worker
+  name: 99-worker-ssh
+spec:
+  config:
+    ignition:
+      version: 3.2.0
+    passwd:
+      users:
+        - name: core
+          sshAuthorizedKeys:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRtuWgA55pmufdKksQ6ekiG+4nvVIvOCqlR3zF5zb+o5E8I8Rdgjaiht5p7RCSV0RApFECXwZmCgXaoodbflnDOjv0qHByzxNRl5x7Hzyw5LRRvW31MrMBFtL7AQjH0q3dj8wgB0VXVon5qZ1hG1P4tVWTYz6JLk4nOIdlg9m86+2M5K4JmOkeU/PFdj3rNoAc46vUp+J7JbJWIksxkbKPwVgyCcoobrMyynxRJFo7p/ort+CHyP4iHT0eK4gU5pMZSqc/NABI89n0ZnHQdp56ed1sPcRtDH8FRtipJ/pH6BKuGW7QQ+r8uARaMZYhf7ask3Fzq002jVYkKaW3wikpdeappD5zXjyyE3F3vxyvEYf3nz9xlnDd9ppDHWjzh4Br1d0Vl0qXzorrkQNeMZTjegK9XDG9dKN+JXllnuHWbmD9wikHsLQPCZLaHp6L94SP6WJZa4PbBVoAAjixPZTPv00Ji/cJv4vf5XG/ojTYOZJQBf60C0ak7ZpIOhXfmIE= dawhite@dawhite-mac
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKk5DMDFPmpzto9s5Nk1FeqrPYNttJnvW6FCWUGrbLFo cory@keepass
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbbtKs6P4wpUbZxIJcEa0t0Hw0x6Tv/Ml1/J7fMRqlQ cory@kowbuntu
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZCclaNu304ostULU/oHr1C25LALS4+nFSFDwO5F7EZ cory@pinky
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFybml+CZeJma57fvjnUKUwuSEn0JZRpa9/SAlu4t/Ct cory@skeldora
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBVozIG+urkwIt9isbxcg+Eqjw/9FvzRK2pfZ59CPgwh cory@kowdora
+            - # ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILedUpDQV71FuFj29wyPkxzumqF24MsY7icFGARLqxMh termux@phone
