@@ -21,15 +21,21 @@ ansible_connection=ssh
 ansible_port=22
 ansible_user=core
 
+[vms:vars]
+ansible_connection=ssh
+ansible_port=22
+ansible_user=core
+
 [vms]
-vm-[00:12].dav
+vm-[01:10]a.dav
+vm-[01:10]b.dav
 
 [ocp]
 children:ctrl
 children:storage
 
 [ctrl]
-vm-[00:02].dav
+vm-[01:03]a.dav
 
 [storage]
-vm-[03:05].dav
+vm-[01:03]b.dav
