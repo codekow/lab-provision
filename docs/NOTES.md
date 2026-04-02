@@ -150,9 +150,9 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ## Links of interest
 
 - [ABI Home Lab](https://github.com/mariocr73/OCP-ABI-BAREMETAL)
+- [Emulated Bare Metal w/ VMs](https://github.com/amedeos/ocp4-in-the-jars)
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
 - [TPM Notes](https://tpm2-software.github.io/2020/06/12/Remote-Attestation-With-tpm2-tools.html)
-- [Emulated Bare Metal w/ VMs](https://github.com/amedeos/ocp4-in-the-jars)
 - [Sushy Tools](https://docs.openstack.org/sushy-tools/latest/admin/)
   - [More Notes](https://jgato.github.io/jgato/posts/redfish-sushy/)
   - [More Notes](https://gist.github.com/williamcaban/e5d02b3b7a93b497459c94446105872c)
