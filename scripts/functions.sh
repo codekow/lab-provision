@@ -105,3 +105,16 @@ lab_uci_setup(){
     lab_uci_create_vm_dhcp vm-"${i}" "${BASE_MAC}:$((num * 2 + 10))" "${BASE_IP}.$((num + BASE_IP_START))"
   done
 }
+
+iommu_get_groups(){
+  [ -d /sys/kernel/iommu_groups/0 ] || return 0
+
+  shopt -s nullglob
+  for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V)
+    do
+      echo "IOMMU Group ${g##*/}:"
+      for d in $g/devices/*; do
+        echo -e "\t$(lspci -nns ${d##*/})"
+    done
+  done
+}
