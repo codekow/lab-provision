@@ -22,4 +22,3 @@ Setup GPU ROM for Libvirt
     <rom file='/lib/firmware/Asus.RTX2080.8192.181011.rom'/>
 </hostdev>
 ```
-

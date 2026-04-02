@@ -43,12 +43,13 @@ ethtool -k eno1 | grep offload
 ```sh
 cat << EOF > /etc/systemd/system/eno1-kludge.service 
 [Unit]
-Description=Fix Nic Hardware Hang
-#After=network.target
+Description=Fix: eno1 Hardware Hang
+After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/ethtool -K eno1 gso off gro off tso off tx off rx off
+ExecStart=/bin/sh -c '/usr/sbin/ip link show eno1 || true'
+ExecStart=/bin/sh -c '/usr/sbin/ethtool -K eno1 gso off gro off tso off tx off rx off || true'
 RemainAfterExit=true
 # ExecStop=true
 StandardOutput=journal
@@ -60,6 +61,7 @@ EOF
 systemctl daemon-reload
 systemctl enable eno1-kludge
 systemctl restart eno1-kludge
+systemctl status eno1-kludge
 ```
 
 ## Create VMs
@@ -147,6 +149,7 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## Links of interest
 
+- [ABI Home Lab](https://github.com/mariocr73/OCP-ABI-BAREMETAL)
 - [4KN Format NVME](https://carlosfelic.io/misc/how-to-switch-your-nvme-ssd-to-4kn-advanced-format/)
 - [TPM Notes](https://tpm2-software.github.io/2020/06/12/Remote-Attestation-With-tpm2-tools.html)
 - [Emulated Bare Metal w/ VMs](https://github.com/amedeos/ocp4-in-the-jars)
@@ -165,3 +168,5 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
   - [More FCOS Ignition](https://coreos.github.io/ignition/getting-started)
 - [Fedora Docs](https://docs.fedoraproject.org/en-US/fedora-coreos/live-booting)
 - [Dracut SSH](https://github.com/dracut-crypt-ssh/dracut-crypt-ssh)
+- [ImageSet Generator](https://github.com/tomazb/imageset-generator)
+- [OKD install](https://github.com/josephaw1022/okd-sno-manual-install)
